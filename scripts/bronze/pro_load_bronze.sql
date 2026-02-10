@@ -1,4 +1,13 @@
-            SELECT name 
+/*
+==========================================================================================
+Stored Procedure: Load Bronze layer (Source -> Bronze)
+The stored procedure loads data into the bronze tables from external csv files.
+It first Truncates the tables before loading to prevent duplication.
+It uses the 'BULK INSERT' command to load the csv files.
+*/
+
+
+SELECT name 
 FROM sys.schemas
 WHERE name = 'bronze';
 
