@@ -1,4 +1,4 @@
-----Loading into Silver Layer
+---Loading into Silver Layer
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 BEGIN
