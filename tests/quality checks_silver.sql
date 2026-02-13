@@ -99,18 +99,25 @@ WHERE bdate <'1924-01-01' OR bdate > GETDATE()
 ==================
 
 
+========================bronze.erp_cust_az12=================================
+
+----Identify out of range dates
+Select DISTINCT
+bdate
+FROM bronze.erp_cust_az12
+WHERE bdate <'1924-01-01' OR bdate > GETDATE()
 
 
 ----Data Stardardization & Consistency
 
 SELECT DISTINCT
 gen
-FROM silver.erp_cust_az12;
+FROM bronze.erp_cust_az12;
 
 
 ---Data Standardization & Consistency
 SELECT DISTINCT cntry
-FROM silver.erp_loc_a101
+FROM bronze.erp_loc_a101
 ORDER BY cntry;
 
 ----Check for unwanted Spaces
@@ -120,4 +127,32 @@ WHERE cat!= TRIM(cat) OR subcat != TRIM(subcat) OR maintenance != TRIM(maintenan
 -----Data Standardization & Consistency
 SELECT DISTINCT
 maintenance
+FROM bronze.erp_px_cat_g1v2;
+
+
+----Data Stardardization & Consistency
+
+SELECT DISTINCT
+gen
+FROM silver.erp_cust_az12;
+---Data Standardization & Consistency
+
+=============bronze.erp_loc_a101=====================================
+
+---Data Standardization & Consistency
+SELECT DISTINCT cntry
+FROM bronze.erp_loc_a101
+ORDER BY cntry;
+
+
+=============================bronze.erp_px_cat_g1v2=====================
+----Check for unwanted Spaces
+Select * from bronze.erp_px_cat_g1v2
+WHERE cat!= TRIM(cat) OR subcat != TRIM(subcat) OR maintenance != TRIM(maintenance);
+
+-----Data Standardization & Consistency
+SELECT DISTINCT
+maintenance
 FROM silver.erp_px_cat_g1v2;
+
+
