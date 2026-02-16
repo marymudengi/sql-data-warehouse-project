@@ -1,3 +1,13 @@
+/*
+
+==============================================================================================
+DDL Script: Create Gold views
+==============================================================================================
+This Script creates views for the Gold layer in the data warehouse.
+==============================================================================================
+
+
+
 CREATE VIEW gold.dim_customers AS
 SELECT 
 ROW_NUMBER() OVER (ORDER BY cst_id) AS customer_key,
